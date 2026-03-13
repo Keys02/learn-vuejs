@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            font-size: 2em
+        }
+
+        button {
+            border: none;
+            color: white;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        button.increment {
+            background-color: red;
+            margin-left: 5px
+        }
+        
+        button.decrement {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Counter</h1>
+        <p>{{ count }}</p>        
+        <button class="decrement" @click="count--">Decrement</button>
+        <button class="increment" @click="count++">Increment</button>
+    </div>
+
+   <script> 
+        Vue.createApp({
+           data() {
+            return {
+                count: 0
+            }
+           } 
+        }).mount('#app')
+   </script>
+</body>
+</html>
