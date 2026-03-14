@@ -10,11 +10,14 @@
 </head>
 <body class="h-full grid place-items-center">
    <div id="app">
-        <section class="mt-2">
+        <section class="mt-2" v-show="inProgressAssignments.length">
             <h1 class="font-bold mb-2">In Progress</h1>
             <ul>
                 <!-- Always add a :key to elements which have a v-for on it -->
-                <li v-for="assignment in assignments.filter(a => !a.complete)" :key="assignment.id">
+                <li 
+                    v-for="assignment in inProgressAssignments" 
+                    :key="assignment.id"
+                >
                     <label>
                         {{ assignment.name }}
                         <input type="checkbox" v-model="assignment.complete">
@@ -23,10 +26,13 @@
             </ul>
         </section>
 
-        <section class="mt-2">
+        <section v-show="completedAssignments.length" class="mt-2">
             <h1 class="font-bold">Completed Assignments</h1>
             <ul>
-                <li v-for="assignment in assignments.filter(ca => ca.complete)" :key="assignment.id">
+                <li 
+                    v-for="assignment in completedAssignments" 
+                    :key="assignment.id"
+                >
                     <label>
                         {{ assignment.name }}
                         <input type="checkbox" v-model="assignment.complete">
@@ -44,6 +50,16 @@
                     {id: 2, name: 'Walk the dog', complete: false},
                     {id: 3, name: 'Do my homework', complete: false},
                 ]
+            }
+        },
+
+        computed: {
+            inProgressAssignments() {
+                return this.assignments.filter(a => ! a.complete)
+            },
+
+            completedAssignments() {
+               return this.assignments.filter(a => a.complete) 
             }
         }
 
