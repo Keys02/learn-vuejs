@@ -32,12 +32,17 @@
         }
 
         button.increment {
-            background-color: red;
+            background-color: rgb(0, 102, 255);
             margin-left: 5px
         }
         
         button.decrement {
-            background-color: green;
+            background-color: rgb(0, 128, 90);
+            margin-left: 5px;
+        }
+
+        button.reset {
+            background-color: rgb(234, 57, 57);
         }
     </style>
 </head>
@@ -46,6 +51,7 @@
         <h1>Counter</h1>
         <p>{{ count }}</p>        
         <button class="decrement" @click="count--">Decrement</button>
+        <button class="reset" @click="count = 0">Reset</button>
         <button class="increment" @click="count++">Increment</button>
     </div>
 
