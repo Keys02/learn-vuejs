@@ -15,6 +15,7 @@ export default {
     },
 
     method: {
+        // The parent communicates to the child through props, the child communicates to the parent by emitting an event
         add(e) {
             this.$emit('add', this.newAssignment)
         }
