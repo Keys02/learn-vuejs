@@ -31,7 +31,7 @@ export default {
                 </li>
             </ul>
         </section>
-        <CreateAssignment></CreateAssignment>
+        <CreateAssignment @add="add"></CreateAssignment>
     `,
 
     data() {
@@ -57,11 +57,11 @@ export default {
     },
 
     methods: {
-        add(e) {
+        add(name) {
             this.assignments.push(
                 {
                     id: this.assignments.length + 1,
-                    name: this.newAssignment,
+                    name: name,
                     completed: false
 
                 }
