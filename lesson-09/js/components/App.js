@@ -5,7 +5,6 @@ import CreateAssignment from "./CreateAssignment.js"
 export default {
     components: {
         Assignments,
-        CreateAssignment
     },
 
     template: `

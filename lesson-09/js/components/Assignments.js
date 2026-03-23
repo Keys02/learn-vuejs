@@ -1,6 +1,9 @@
 import CreateAssignment from "./CreateAssignment.js"
 
 export default {
+
+    components: { CreateAssignment },
+
     template: `
         <section class="mt-2" v-show="inProgressAssignments.length">
             <h1 class="font-bold mb-2">In Progress</h1>
