@@ -17,6 +17,8 @@ export default {
     methods: {
         add(e) {
             this.$emit('add', this.newAssignment)
+            this.newAssignment = ''
         }
+
     }
 }
