@@ -9,7 +9,13 @@ export default {
                 In Progress
                 <span>({{ assignments.length }})</span>
             </h1>
-            <ul class="border divide-y">
+            <div class="flex gap-2">
+                <button 
+                @click="currentTag = tag"
+                class="cursor-pointer border px-1 py-px rounded text-xs" v-for="tag in tags"
+                >{{ tag }}</button> 
+            </div>
+            <ul class="border divide-y mt-6">
                 <li 
                     v-for="assignment in inProgressAssignments" 
                     :key="assignment.id"
@@ -42,22 +48,30 @@ export default {
     data() {
         return {
             assignments: [
-                {id: 1, name: 'Clean my room', complete: false},
-                {id: 2, name: 'Walk the dog', complete: false},
-                {id: 3, name: 'Do my homework', complete: false},
+                {id: 1, name: 'Clean my room', complete: false, tag: 'home'},
+                {id: 2, name: 'Walk the dog', complete: false, tag: 'home'},
+                {id: 3, name: 'Do my homework', complete: false, tag: 'school'},
             ],
 
-            newAssignment: ''
+            currentTag: 'home'
         }
     },
 
     computed: {
         inProgressAssignments() {
-            return this.assignments.filter(a => ! a.complete)
+            if (this.currentTag == 'all') return this.assignments.filter(a => ! a.complete)
+
+            return this.assignments.filter(a => ! a.complete && a.tag === this.currentTag)
         },
 
         completedAssignments() {
-            return this.assignments.filter(a => a.complete) 
+            if (this.currentTag == 'all') return this.assignments.filter(a => a.complete)
+
+            return this.assignments.filter(a => a.complete && a.tag === this.currentTag) 
+        },
+
+        tags() {
+            return ['all', ...new Set(this.assignments.map(a => a.tag))]
         }
     },
 
