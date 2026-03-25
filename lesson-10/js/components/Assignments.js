@@ -13,6 +13,9 @@ export default {
                 <button 
                 @click="currentTag = tag"
                 class="cursor-pointer border px-1 py-px rounded text-xs" v-for="tag in tags"
+                :class="{
+                    'border-blue-500, text-blue-500' : tag == currentTag
+                }"
                 >{{ tag }}</button> 
             </div>
             <ul class="border divide-y mt-6">
