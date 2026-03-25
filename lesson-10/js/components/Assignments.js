@@ -33,6 +33,15 @@ export default {
 
         <section class="space-y-6" v-show="completedAssignments.length">
             <h1 class="font-bold mb-2 mt-3">Completed Assignments</h1>
+            <div class="flex gap-2">
+                <button 
+                @click="currentTag = tag"
+                class="cursor-pointer border px-1 py-px rounded text-xs" v-for="tag in tags"
+                :class="{
+                    'border-blue-500, text-blue-500' : tag == currentTag
+                }"
+                >{{ tag }}</button> 
+            </div>
             <ul class="border divide-y">
                 <li 
                     v-for="assignment in completedAssignments" 
